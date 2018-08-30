@@ -1,0 +1,35 @@
+{
+  "name": "zanexpress",
+  "version": "1.0.0",
+  "description": "test express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/hirzanalhakim/testExpress.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "hirzan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/hirzanalhakim/testExpress/issues"
+  },
+  "homepage": "https://gitlab.com/hirzanalhakim/testExpress#README",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "express-mailer": "^0.3.1",
+    "jade": "^1.11.0",
+    "moment": "^2.22.2",
+    "mysql": "^2.15.0",
+    "pg": "^7.4.3",
+    "pg-promise": "^8.4.5"
+  }
+}
