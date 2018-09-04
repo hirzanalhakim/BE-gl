@@ -26,27 +26,35 @@ const login = {
       const conn = pgp(db);
       conn.query(`SELECT * FROM public.user WHERE user_name = '${user.userName}'`)
         .then((data) => {
-          console.log('data', data[0].user_password);
           let result = {
+            user_id: data[0].user_id,
             username: data[0].user_name,
             userEmail: data[0].user_email
           }
           hash = data[0].user_password;
+          console.log('result user_id', result.user_id);
+          console.log('hash', hash)
+          if (!hash) {
+            notes = `can't find this username`;
+            reject({ notes });
+          } else {
+            bcrypt.compare(user.password, hash, function (err, res) {
+              console.log('res', res);
+              console.log('err', err);
+              if (res) {
+                // Passwords match
+                resolve(result)
+              } else {
+                notes = 'wrong password';
+                reject({ notes });
+              }
+            });
+          }
 
-          bcrypt.compare(user.password, hash, function (err, res) {
-            if (res) {
-              // Passwords match
-              resolve(result)
-            } else {
-              // Passwords don't match
-              result = 'wrong password';
-              resolve({ result });
-            }
-          });
         })
         .catch(error => {
           console.log('ERROR:', error)
-          reject(error)
+          reject('gagal masuk coy')
         })
         .finally(conn.$pool.end);
 
